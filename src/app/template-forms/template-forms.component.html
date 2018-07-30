@@ -1,0 +1,16 @@
+<p>Template Form</p>
+<form #f="ngForm">
+  <input [ngModel]="name.first" ngModel name="first" placeholder="First name">
+  <input [ngModel]="name.last" ngModel name="last" placeholder="Last name">
+  <div ngModelGroup="account" password-matcher #accountGroup="ngModelGroup">
+    <input ngModel name="username" placeholder="User name">
+    <input ngModel name="password" placeholder="Password" required #password="ngModel">
+    <input ngModel name="confirm" placeholder="Confirm password" required>
+  </div>
+  <label>Would you like to receive a news letter?</label>
+  <app-switch-control name="newsletter" ngModel></app-switch-control>
+  <button>SUBMIT</button>
+</form>
+<p>{{f.value | json}}</p>
+<p>Form status : {{f.control.status}}</p>
+<p>Account status : {{accountGroup.control?.errors | json}}</p>
